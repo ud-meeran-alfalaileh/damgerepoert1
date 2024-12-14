@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1082140399037",
+    "project_id": "damgereport",
+    "storage_bucket": "damgereport.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082140399037:android:10760b9737ba3f6447eed4",
+        "android_client_info": {
+          "package_name": "com.example.damgerepoert"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH12h5WQnVbQnMQWWNxoo54cBRb_qNglM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
