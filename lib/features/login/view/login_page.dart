@@ -6,6 +6,7 @@ import 'package:damgerepoert/core/widget/buttons.dart';
 import 'package:damgerepoert/core/widget/form_model.dart';
 import 'package:damgerepoert/core/widget/text.dart';
 import 'package:damgerepoert/features/login/controller/controller.dart';
+import 'package:damgerepoert/features/signup/view/register_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -21,11 +22,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final controller = Get.put(LoginController());
 
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
+  
 
   void clearText() {
     controller.email.clear();
@@ -113,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Get.to(Container());
+                            Get.to(const RegisterScreen());
                           },
                         text: 'Sign Up',
                         style: TextStyle(

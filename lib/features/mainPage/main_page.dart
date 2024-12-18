@@ -2,6 +2,8 @@ import 'package:damgerepoert/config/theme/theme.dart';
 import 'package:damgerepoert/core/backend/authentication.dart';
 import 'package:damgerepoert/core/backend/user_repository.dart';
 import 'package:damgerepoert/features/add_report/view/add_report.dart';
+import 'package:damgerepoert/features/dashboard/dashboard_page.dart';
+import 'package:damgerepoert/features/map/view/map_page.dart';
 import 'package:damgerepoert/features/profile/view/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,14 +28,15 @@ class _MainPageState extends State<MainPage> {
 
   int _selectedIndex = 0;
   static final List<Widget> _widgetsOptions = [
-    Container(),
-    ReportSubmissionForm(),
+    const DashboardPage(),
+    const ReportSubmissionForm(),
+    MapPage(),
     const ProfileWidget(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.mainAppColor,
+      // backgroundColor: AppColor.mainAppColor,
       body: Center(
         child: _widgetsOptions.elementAt(_selectedIndex),
       ),
@@ -66,6 +69,9 @@ class _MainPageState extends State<MainPage> {
                 ),
                 GButton(
                   icon: Icons.add,
+                ),
+                GButton(
+                  icon: Icons.location_on_outlined,
                 ),
                 GButton(
                   icon: Icons.account_circle_outlined,

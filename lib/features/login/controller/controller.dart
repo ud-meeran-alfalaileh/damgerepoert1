@@ -1,6 +1,6 @@
 import 'package:damgerepoert/config/theme/theme.dart';
 import 'package:damgerepoert/core/backend/authentication.dart';
-import 'package:damgerepoert/features/mainPage/main_page.dart';
+import 'package:damgerepoert/features/dashboard/user_check_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -33,14 +33,13 @@ class LoginController extends GetxController {
             snackPosition: SnackPosition.BOTTOM,
             colorText: AppColor.subappcolor,
             backgroundColor: AppColor.success);
-        Get.to(const MainPage());
+        Get.offAll(const UserTypeCheck());
       } else {
         Get.snackbar("ERROR", "Email or Password is invild",
             snackPosition: SnackPosition.BOTTOM,
             colorText: AppColor.mainAppColor,
             backgroundColor: AppColor.error);
       }
-      return;
     } else {
       Get.snackbar("ERROR", "Email or Password is invild",
           snackPosition: SnackPosition.BOTTOM,

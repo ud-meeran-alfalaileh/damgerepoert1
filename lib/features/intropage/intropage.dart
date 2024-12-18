@@ -14,7 +14,7 @@ class IntroPage extends StatelessWidget {
         body: GestureDetector(
           onTap: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ButtonsPage()),
+            MaterialPageRoute(builder: (context) => const ButtonsPage()),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -2,6 +2,7 @@ import 'package:damgerepoert/config/theme/theme.dart';
 import 'package:damgerepoert/core/backend/user_repository.dart';
 import 'package:damgerepoert/core/model/user_model.dart';
 import 'package:damgerepoert/core/widget/text.dart';
+import 'package:damgerepoert/features/add_report/view/view_report.dart';
 import 'package:damgerepoert/features/profile/controller/profile_controller.dart';
 import 'package:damgerepoert/features/profile/model/profile_button_model.dart';
 import 'package:damgerepoert/features/profile/repository/profile_repository.dart';
@@ -9,7 +10,6 @@ import 'package:damgerepoert/features/profile/widget/profile_container.dart';
 import 'package:damgerepoert/features/update_profile/update_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,44 +45,18 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     List<ProfileButton> profileList = [
       ProfileButton(
         title: 'My Reports',
-        icon: SvgPicture.asset(
-          'assets/arrow.svg',
-          matchTextDirection: true,
-          width: 15,
-          height: 15,
-        ),
+        icon: const Icon(Icons.arrow_forward_ios),
         onTap: () =>
-            Get.to(const Scaffold(), transition: Transition.rightToLeft),
-      ),
-      ProfileButton(
-        title: 'My Schedule',
-        icon: SvgPicture.asset(
-          'assets/arrow.svg',
-          matchTextDirection: true,
-          width: 15,
-          height: 15,
-        ),
-        onTap: () =>
-            Get.to(const Scaffold(), transition: Transition.rightToLeft),
+            Get.to(const ViewReport(), transition: Transition.rightToLeft),
       ),
       ProfileButton(
         title: 'About',
-        icon: SvgPicture.asset(
-          'assets/arrow.svg',
-          matchTextDirection: true,
-          width: 15,
-          height: 15,
-        ),
+        icon: const Icon(Icons.arrow_forward_ios),
         onTap: () {},
       ),
       ProfileButton(
         title: 'Logout',
-        icon: SvgPicture.asset(
-          'assets/arrow.svg',
-          matchTextDirection: true,
-          width: 15,
-          height: 15,
-        ),
+        icon: const Icon(Icons.arrow_forward_ios),
         onTap: () {
           showLogoutDialog(context);
         },
@@ -94,6 +68,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: TextApp.appBarText('profile'),
         ),
         backgroundColor: Colors.white,

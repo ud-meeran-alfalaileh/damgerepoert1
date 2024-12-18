@@ -20,7 +20,7 @@ class TextApp {
       title,
       style: GoogleFonts.poppins(
           textStyle: TextStyle(
-              color: AppColor.subappcolor,
+              color: AppColor.mainAppColor,
               fontWeight: FontWeight.bold,
               fontSize: 20)),
     );
@@ -45,6 +45,16 @@ class TextApp {
               color: AppColor.mainAppColor,
               fontWeight: FontWeight.bold,
               fontSize: 22)),
+    );
+  }
+  static Text adviceText(String title) {
+    return Text(
+      title,
+      style: GoogleFonts.poppins(
+          textStyle: TextStyle(
+              color: AppColor.mainAppColor,
+              fontWeight: FontWeight.w700,
+              fontSize: 17)),
     );
   }
 }

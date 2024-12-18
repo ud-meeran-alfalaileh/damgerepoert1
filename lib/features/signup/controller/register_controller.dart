@@ -2,7 +2,7 @@ import 'package:damgerepoert/config/theme/theme.dart';
 import 'package:damgerepoert/core/backend/authentication.dart';
 import 'package:damgerepoert/core/backend/user_repository.dart';
 import 'package:damgerepoert/core/model/user_model.dart';
-import 'package:damgerepoert/features/dashboard/dashboard.dart';
+import 'package:damgerepoert/features/dashboard/user_check_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
