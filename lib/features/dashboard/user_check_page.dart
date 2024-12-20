@@ -26,7 +26,7 @@ class _UserTypeCheckState extends State<UserTypeCheck> {
   void initState() {
     super.initState();
     if (email != null) {
-      userRepository.getUserDetails(email!);
+      // userRepository.getUserDetails(email!);
     }
   }
 
