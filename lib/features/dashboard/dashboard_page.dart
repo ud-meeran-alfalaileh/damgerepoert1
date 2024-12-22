@@ -63,7 +63,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               Center(
                                 child: Text(
                                   adviceController.advices[index].title,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold,
@@ -137,7 +137,7 @@ class ReportContainer extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
         width: context.screenWidth,
         decoration: BoxDecoration(
-            color: Colors.white,
+            // color: Colors.white,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: AppColor.mainAppColor.withOpacity(0.2))),
         child: Row(

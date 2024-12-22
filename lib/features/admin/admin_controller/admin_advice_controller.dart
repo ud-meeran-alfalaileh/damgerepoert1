@@ -46,6 +46,7 @@ class AdviceController extends GetxController {
     isloading.value = true;
     try {
       advices.value = await reportRepository.fetchAdvice();
+      
       isloading.value = false;
     } catch (e) {
       print(e);

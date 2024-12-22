@@ -23,7 +23,7 @@ class _MapPageState extends State<MapPage> {
   }
 
   Future<void> getData() async {
-    await controller.getCurrentLocation();
+    // await controller.getCurrentLocation();
     await controller.getReport();
   }
 

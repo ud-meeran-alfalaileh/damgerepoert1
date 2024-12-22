@@ -102,7 +102,6 @@ class _ReportSubmissionFormState extends State<ReportSubmissionForm> {
                     children: [
                       TextApp.mainAppText("Add Report"),
                       const SizedBox(height: 20),
-
                       TextFormField(
                         controller: _controller.reportName,
                         decoration: InputDecoration(
@@ -155,34 +154,50 @@ class _ReportSubmissionFormState extends State<ReportSubmissionForm> {
                         validator: _controller.validateReportDescription,
                       ),
                       const SizedBox(height: 20),
-                      TextFormField(
-                        controller: _controller.reportDate,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColor.mainAppColor,
-                              ),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(5))),
-                          border: const OutlineInputBorder(),
-                          enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  // color: AppTheme.lightAppColors.black.withOpacity(.2),
+                      Stack(
+                        children: [
+                          TextFormField(
+                            controller: _controller.reportDate,
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: AppColor.mainAppColor,
                                   ),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
-                          labelText: "Report Date",
-                          hintText: "YYYY-MM-DD",
-                          hintStyle: const TextStyle(
-                              fontFamily: "Alexandria",
-                              fontWeight: FontWeight.w500,
-                              // color: AppTheme.lightAppColors.black.withOpacity(.5),
-                              fontSize: 14),
-                        ),
-                        validator: _controller.validateReportDate,
-                        keyboardType: TextInputType.datetime,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(5))),
+                              border: const OutlineInputBorder(),
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      // color: AppTheme.lightAppColors.black.withOpacity(.2),
+                                      ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5))),
+                              labelText: "Report Date",
+                              hintText: "YYYY-MM-DD",
+                              enabled: false,
+                              hintStyle: const TextStyle(
+                                  fontFamily: "Alexandria",
+                                  fontWeight: FontWeight.w500,
+                                  // color: AppTheme.lightAppColors.black.withOpacity(.5),
+                                  fontSize: 14),
+                            ),
+                            validator: _controller.validateReportDate,
+                            keyboardType: TextInputType.datetime,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              reportkDateWidget(
+                                  context, _controller.reportDate);
+                            },
+                            child: Container(
+                              width: context.screenWidth,
+                              height: context.screenHeight * .1,
+                              color: Colors.transparent,
+                            ),
+                          )
+                        ],
                       ),
-                      const SizedBox(height: 20),
+                      // const SizedBox(height: 20),
                       Stack(
                         children: [
                           TextFormField(
@@ -306,5 +321,52 @@ class _ReportSubmissionFormState extends State<ReportSubmissionForm> {
         ),
       ),
     );
+  }
+}
+
+Future<void> reportkDateWidget(
+    BuildContext context, TextEditingController text) async {
+  DateTime? newDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2100),
+    builder: (context, child) {
+      return Theme(
+        data: ThemeData.light().copyWith(
+          // Customizing the color of the DatePicker
+          datePickerTheme: DatePickerThemeData(
+            backgroundColor: Colors.white,
+            headerBackgroundColor: AppColor.mainAppColor,
+            headerForegroundColor: Colors.white,
+            dayForegroundColor: MaterialStateColor.resolveWith((states) {
+              if (states.contains(MaterialState.selected)) {
+                return Colors.white; // Selected day color
+              }
+              return Colors.black; // Default day color
+            }),
+            dayBackgroundColor: MaterialStateColor.resolveWith((states) {
+              if (states.contains(MaterialState.selected)) {
+                return AppColor.mainAppColor; // Background for selected day
+              }
+              return Colors.white; // Default background
+            }),
+            yearForegroundColor: MaterialStateColor.resolveWith((states) {
+              if (states.contains(MaterialState.selected)) {
+                return Colors.white; // Selected year color
+              }
+              return Colors.black; // Default year color
+            }),
+          ),
+        ),
+        child: child!,
+      );
+    },
+  );
+
+  if (newDate != null) {
+    text.text =
+        "${newDate.year}-${newDate.month.toString().padLeft(2, '0')}-${newDate.day.toString().padLeft(2, '0')}";
+    // Display the selected date in YYYY-MM-DD format
   }
 }

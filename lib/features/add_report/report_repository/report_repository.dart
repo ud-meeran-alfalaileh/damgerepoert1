@@ -9,7 +9,7 @@ class ReportRepository {
     try {
       await _firestore.collection(_collectionPath).add(report.tojason());
     } catch (e) {
-      throw Exception("meeran Failed to create report: $e");
+      throw Exception("Failed to create report: $e");
     }
   }
 

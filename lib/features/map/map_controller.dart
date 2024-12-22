@@ -81,30 +81,30 @@ class MapController extends GetxController {
     );
   }
 
-  Future<void> getCurrentLocation() async {
-    LocationPermission permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied) {
-      // Handle denied permission
-    } else if (permission == LocationPermission.deniedForever) {
-      // Handle permanently denied permission
-    } else {
-      try {
-        Position position = await Geolocator.getCurrentPosition();
-        initialPosition = LatLng(position.latitude, position.longitude);
+//   Future<void> getCurrentLocation() async {
+//     LocationPermission permission = await Geolocator.requestPermission();
+//     if (permission == LocationPermission.denied) {
+//       // Handle denied permission
+//     } else if (permission == LocationPermission.deniedForever) {
+//       // Handle permanently denied permission
+//     } else {
+//       try {
+//         Position position = await Geolocator.getCurrentPosition();
+//         initialPosition = LatLng(position.latitude, position.longitude);
 
-        goToPosition(position);
+//         goToPosition(position);
 
-        markers.clear(); // clear old marker and set new one
-        final marker = Marker(
-          markerId: const MarkerId('deliveryMarker'),
-          position: LatLng(position.latitude, position.longitude),
-          infoWindow: const InfoWindow(
-            title: '',
-          ),
-        );
-      } catch (e) {
-        print(e);
-      }
-    }
-  }
+//         markers.clear(); // clear old marker and set new one
+//         final marker = Marker(
+//           markerId: const MarkerId('deliveryMarker'),
+//           position: LatLng(position.latitude, position.longitude),
+//           infoWindow: const InfoWindow(
+//             title: '',
+//           ),
+//         );
+//       } catch (e) {
+//         print(e);
+//       }
+//     }
+//   }
 }

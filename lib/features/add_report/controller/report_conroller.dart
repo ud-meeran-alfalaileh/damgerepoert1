@@ -16,6 +16,7 @@ class ReportController extends GetxController {
   final formKey = GlobalKey<FormState>();
   var latitude = 0.0.obs;
   var longitude = 0.0.obs;
+  
   RxList<ReportModel> reports = <ReportModel>[].obs;
   RxBool isloading = true.obs;
   final reportRepository = Get.put(ReportRepository());
