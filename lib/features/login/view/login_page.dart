@@ -22,8 +22,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final controller = Get.put(LoginController());
 
-  
-
   void clearText() {
     controller.email.clear();
     controller.password.clear();
@@ -49,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 TextApp.mainAppText('Let’s Login.!'),
                 Form(
-                  key: controller.formkey,
+                  // key: controller.formkey,
                   child: SizedBox(
                     height: 450,
                     width: double.infinity,

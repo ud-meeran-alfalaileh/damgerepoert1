@@ -4,8 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
-  final RxString gender = ''.obs;
-  final RxString age = ''.obs;
+  
   final RxString username = ''.obs;
   final RxString email = ''.obs;
   final RxString phone = ''.obs;
@@ -79,8 +78,7 @@ class UserController extends GetxController {
     username.value = '';
     email.value = '';
     phone.value = '';
-    gender.value = '';
-    age.value = '';
+    
     isLoggedIn.value = false;
     notification.value = false;
     isSwitched.value = false;

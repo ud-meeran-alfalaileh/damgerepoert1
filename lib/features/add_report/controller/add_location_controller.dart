@@ -41,7 +41,6 @@ class LocationController extends GetxController {
         hint: 'Search for a location...',
         language: 'en',
         textStyle: const TextStyle(color: Colors.black),
-        cursorColor: AppColor.mainAppColor,
         insetPadding: const EdgeInsets.symmetric(horizontal: 10),
         backArrowIcon: Icon(
           Icons.arrow_back,

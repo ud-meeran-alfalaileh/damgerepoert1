@@ -7,6 +7,7 @@ class AdviceController extends GetxController {
   final reportRepository = Get.put(AdviceRepository());
   final formKey = GlobalKey<FormState>();
   final title = TextEditingController();
+
   RxList<AdviceModel> advices = <AdviceModel>[].obs;
   RxBool isloading = true.obs;
   Future<void> createAdvice(AdviceModel advice) async {
@@ -29,6 +30,15 @@ class AdviceController extends GetxController {
           colorText: Colors.white,
         );
       }
+    }
+  }
+
+  Future<void> deleteAdvice(id) async {
+    try {
+      await reportRepository.deleteAdvice(id);
+      getAdvices();
+    } catch (e) {
+      print(e);
     }
   }
 

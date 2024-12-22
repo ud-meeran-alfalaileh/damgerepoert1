@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:damgerepoert/config/sizes/sizes.dart';
+import 'package:damgerepoert/config/theme/theme.dart';
 import 'package:damgerepoert/core/backend/authentication.dart';
 import 'package:damgerepoert/core/model/report_model.dart';
+import 'package:damgerepoert/core/widget/text.dart';
 import 'package:damgerepoert/features/add_report/controller/report_conroller.dart';
 import 'package:damgerepoert/features/add_report/view/add_location_widget.dart';
 import 'package:dio/dio.dart' as dio;
@@ -98,37 +100,89 @@ class _ReportSubmissionFormState extends State<ReportSubmissionForm> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      // TextFormField(
-                      //   controller: _controller.userEmail,
-                      //   decoration:
-                      //       const InputDecoration(labelText: "User Email"),
-                      //   validator: _controller.validateEmail,
-                      // ),
-                      // const SizedBox(height: 10),
+                      TextApp.mainAppText("Add Report"),
+                      const SizedBox(height: 20),
+
                       TextFormField(
                         controller: _controller.reportName,
-                        decoration:
-                            const InputDecoration(labelText: "Report Name"),
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: AppColor.mainAppColor,
+                              ),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(5))),
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  // color: AppTheme.lightAppColors.black.withOpacity(.2),
+                                  ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          labelText: "Report Name",
+                          hintStyle: const TextStyle(
+                              fontFamily: "Alexandria",
+                              fontWeight: FontWeight.w500,
+                              // color: AppTheme.lightAppColors.black.withOpacity(.5),
+                              fontSize: 14),
+                        ),
                         validator: _controller.validateReportName,
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       TextFormField(
                         controller: _controller.reportDescription,
-                        decoration: const InputDecoration(
-                            labelText: "Report Description"),
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: AppColor.mainAppColor,
+                              ),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(5))),
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  // color: AppTheme.lightAppColors.black.withOpacity(.2),
+                                  ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          labelText: "Report Description",
+                          hintStyle: const TextStyle(
+                              fontFamily: "Alexandria",
+                              fontWeight: FontWeight.w500,
+                              // color: AppTheme.lightAppColors.black.withOpacity(.5),
+                              fontSize: 14),
+                        ),
                         validator: _controller.validateReportDescription,
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       TextFormField(
                         controller: _controller.reportDate,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: AppColor.mainAppColor,
+                              ),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(5))),
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  // color: AppTheme.lightAppColors.black.withOpacity(.2),
+                                  ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
                           labelText: "Report Date",
                           hintText: "YYYY-MM-DD",
+                          hintStyle: const TextStyle(
+                              fontFamily: "Alexandria",
+                              fontWeight: FontWeight.w500,
+                              // color: AppTheme.lightAppColors.black.withOpacity(.5),
+                              fontSize: 14),
                         ),
                         validator: _controller.validateReportDate,
                         keyboardType: TextInputType.datetime,
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       Stack(
                         children: [
                           TextFormField(
@@ -136,11 +190,33 @@ class _ReportSubmissionFormState extends State<ReportSubmissionForm> {
                               reportController.showMap.value = true;
                             },
                             controller: _controller.location,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: AppColor.mainAppColor,
+                                  ),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(5))),
+                              border: const OutlineInputBorder(),
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      // color: AppTheme.lightAppColors.black.withOpacity(.2),
+                                      ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5))),
                               labelText: "Location",
                               enabled: false,
-                              hintText: "YYYY-MM-DD",
+                              hintStyle: const TextStyle(
+                                  fontFamily: "Alexandria",
+                                  fontWeight: FontWeight.w500,
+                                  // color: AppTheme.lightAppColors.black.withOpacity(.5),
+                                  fontSize: 14),
                             ),
+                            // decoration: const InputDecoration(
+                            //   labelText: "Location",
+                            //   enabled: false,
+                            //   hintText: "YYYY-MM-DD",
+                            // ),
                             validator: _controller.validateReportLocation,
                             keyboardType: TextInputType.datetime,
                           ),
@@ -156,7 +232,7 @@ class _ReportSubmissionFormState extends State<ReportSubmissionForm> {
                           )
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       GestureDetector(
                         onTap: _pickImage,
                         child: Container(
@@ -179,29 +255,31 @@ class _ReportSubmissionFormState extends State<ReportSubmissionForm> {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () async {
-                          if (_uploadedImageUrl != null) {
-                            isLoading.value = true;
-                            final report = ReportModel(
-                              userEmail: email ?? "none",
-                              reportName: _controller.reportName.text,
-                              date: _controller.reportDate.text,
-                              reportImage: _uploadedImageUrl!,
-                              reportDescription:
-                                  reportController.reportDescription.text,
-                              reportLocation: reportController.location.text,
-                              status: 'pending',
-                            );
+                          if (_controller.formKey.currentState!.validate()) {
+                            if (_uploadedImageUrl != null) {
+                              isLoading.value = true;
+                              final report = ReportModel(
+                                userEmail: email ?? "none",
+                                reportName: _controller.reportName.text,
+                                date: _controller.reportDate.text,
+                                reportImage: _uploadedImageUrl!,
+                                reportDescription:
+                                    reportController.reportDescription.text,
+                                reportLocation: reportController.location.text,
+                                status: 'pending',
+                              );
 
-                            await _controller.createReport(report);
-                            isLoading.value = false;
-                          } else if (_uploadedImageUrl == null) {
-                            Get.snackbar(
-                              "Error",
-                              'Select an image',
-                              snackPosition: SnackPosition.BOTTOM,
-                              backgroundColor: Colors.red,
-                              colorText: Colors.white,
-                            );
+                              await _controller.createReport(report);
+                              isLoading.value = false;
+                            } else if (_uploadedImageUrl == null) {
+                              Get.snackbar(
+                                "Error",
+                                'Select an image',
+                                snackPosition: SnackPosition.BOTTOM,
+                                backgroundColor: Colors.red,
+                                colorText: Colors.white,
+                              );
+                            }
                           }
                         },
                         child: const Text("Submit Report"),

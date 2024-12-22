@@ -38,7 +38,7 @@ class AddLocation extends StatelessWidget {
                         },
                         icon: const Icon(
                           Icons.arrow_back_ios_new_rounded,
-                          color: Color(0xff000000),
+                          color: Colors.black,
                         ))
                   ],
                 ),
@@ -150,7 +150,7 @@ Obx googleMapWidget(LocationController controller) {
           position:
               LatLng(controller.latitude.value, controller.longitude.value),
           infoWindow: const InfoWindow(
-            title: 'AppLocalizations.of(context).will_deliver_here',
+            title: '',
           ),
         );
         controller.markers['myLocation'] = marker;

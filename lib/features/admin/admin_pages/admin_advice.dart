@@ -1,4 +1,5 @@
 import 'package:damgerepoert/config/sizes/size_box_extension.dart';
+import 'package:damgerepoert/config/sizes/sizes.dart';
 import 'package:damgerepoert/core/widget/text.dart';
 import 'package:damgerepoert/features/admin/admin_controller/admin_advice_controller.dart';
 import 'package:damgerepoert/features/admin/admin_pages/admin_add_advice.dart';
@@ -53,13 +54,40 @@ class _AdminAdviceState extends State<AdminAdvice> {
                             return 10.0.kH;
                           },
                           itemBuilder: (BuildContext context, int index) {
-                            return Column(
+                            return Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Image.network(controller.advices[index].image),
-                                TextApp.adviceText(
-                                    "Advice: ${controller.advices[index].title}"),
+                                Image.network(
+                                  controller.advices[index].image,
+                                  width: context.screenWidth * .5,
+                                ),
+                                10.0.kW,
+                                SizedBox(
+                                  width: context.screenWidth * .35,
+                                  child: Column(
+                                    children: [
+                                      TextApp.adviceText(
+                                          "Advice: ${controller.advices[index].title}"),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
+                                              controller.deleteAdvice(
+                                                  controller.advices[index].id);
+                                            },
+                                            icon: const Icon(
+                                              Icons.delete,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                )
                               ],
                             );
                           },

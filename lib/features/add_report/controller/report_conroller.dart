@@ -106,7 +106,7 @@ class ReportController extends GetxController {
   }
 
   String? validateImageUrl(String? url) {
-    if (url != null && Uri.tryParse(url)?.hasAbsolutePath == true) {
+    if (url != null) {
       return null;
     }
     return 'Invalid image URL';
@@ -122,6 +122,17 @@ class ReportController extends GetxController {
   Future<void> onSubmit(ReportModel reportModel) async {
     if (formKey.currentState!.validate()) {
       await createReport(reportModel);
+    }
+  }
+
+  Future<void> deleteReport(id) async {
+    isloading.value = true;
+    try {
+      await reportRepository.deleteReport(id);
+      isloading.value = false;
+      getReport();
+    } catch (e) {
+      print(e);
     }
   }
 }

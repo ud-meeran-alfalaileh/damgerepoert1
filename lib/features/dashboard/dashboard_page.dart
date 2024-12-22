@@ -30,7 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColor.subappcolor,
+      backgroundColor: AppColor.subappcolor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -103,7 +103,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     ? const CircularProgressIndicator()
                     : ListView.separated(
                         shrinkWrap: true,
-                        itemCount: 1,
+                        itemCount: 2,
                         separatorBuilder: (BuildContext context, int index) {
                           return const SizedBox(
                             height: 10,

@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
-  final formkey = GlobalKey<FormState>();
+  // final formkey = GlobalKey<FormState>();
   final email = TextEditingController();
   final password = TextEditingController();
 
@@ -25,26 +25,26 @@ class LoginController extends GetxController {
   }
 
   Future onLogin() async {
-    if (formkey.currentState!.validate()) {
-      Future<bool> code = AuthenticationRepository()
-          .login(email.text.trim(), password.text.trim());
-      if (await code) {
-        Get.snackbar("Success", "Login Successful",
-            snackPosition: SnackPosition.BOTTOM,
-            colorText: AppColor.subappcolor,
-            backgroundColor: AppColor.success);
-        Get.offAll(const UserTypeCheck());
-      } else {
-        Get.snackbar("ERROR", "Email or Password is invild",
-            snackPosition: SnackPosition.BOTTOM,
-            colorText: AppColor.mainAppColor,
-            backgroundColor: AppColor.error);
-      }
+    // if (formkey.currentState!.validate()) {
+    Future<bool> code = AuthenticationRepository()
+        .login(email.text.trim(), password.text.trim());
+    if (await code) {
+      Get.snackbar("Success", "Login Successful",
+          snackPosition: SnackPosition.BOTTOM,
+          colorText: AppColor.subappcolor,
+          backgroundColor: AppColor.success);
+      Get.offAll(const UserTypeCheck());
     } else {
       Get.snackbar("ERROR", "Email or Password is invild",
           snackPosition: SnackPosition.BOTTOM,
           colorText: AppColor.mainAppColor,
           backgroundColor: AppColor.error);
     }
+    // } else {
+    //   Get.snackbar("ERROR", "Email or Password is invild",
+    //       snackPosition: SnackPosition.BOTTOM,
+    //       colorText: AppColor.mainAppColor,
+    //       backgroundColor: AppColor.error);
+    // }
   }
 }

@@ -30,13 +30,12 @@ class _MainPageState extends State<MainPage> {
   static final List<Widget> _widgetsOptions = [
     const DashboardPage(),
     const ReportSubmissionForm(),
-    MapPage(),
+    const MapPage(),
     const ProfileWidget(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColor.mainAppColor,
       body: Center(
         child: _widgetsOptions.elementAt(_selectedIndex),
       ),

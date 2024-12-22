@@ -47,6 +47,7 @@ class TextApp {
               fontSize: 22)),
     );
   }
+
   static Text adviceText(String title) {
     return Text(
       title,

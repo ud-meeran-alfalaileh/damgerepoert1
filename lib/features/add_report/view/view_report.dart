@@ -5,23 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class ViewReport extends StatefulWidget {
+class ViewReport extends StatelessWidget {
   const ViewReport({super.key});
 
   @override
-  State<ViewReport> createState() => _ViewReportState();
-}
-
-class _ViewReportState extends State<ViewReport> {
-  @override
-  void initState() {
-    // controller.getReport();
-    super.initState();
-  }
-
-  final controller = Get.put(ReportController());
-  @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ReportController());
+
     return Scaffold(
       // backgroundColor: AppColor.subappcolor,
       body: SafeArea(

@@ -71,9 +71,7 @@ class _AdminAddAdviceState extends State<AdminAddAdvice> {
           _uploadedImageUrl = fileName;
         });
       } else {}
-    } catch (e) {
-      print("meeran $e");
-    }
+    } catch (e) {}
   }
 
   @override
@@ -132,7 +130,7 @@ class _AdminAddAdviceState extends State<AdminAddAdvice> {
                       );
                     }
                   },
-                  child: const Text("Submit Report"),
+                  child: const Text("Submit Advice"),
                 ),
               ],
             ),

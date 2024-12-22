@@ -53,8 +53,7 @@ class _UserTypeCheckState extends State<UserTypeCheck> {
           }
           var userData =
               snapshot.data!.docs.first.data() as Map<String, dynamic>;
-          print(userData['userType']);
-          if (userData['userType'] == 'User') {
+           if (userData['userType'] == 'User') {
             return const MainPage();
           } else if (userData['userType'] == 'Admin') {
             return const AdminNavBar();

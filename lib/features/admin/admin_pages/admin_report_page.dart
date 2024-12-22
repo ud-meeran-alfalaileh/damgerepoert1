@@ -28,33 +28,37 @@ class _AdminReportPageState extends State<AdminReportPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              Row(
-                children: [TextApp.mainAppText("Report")],
-              ),
-              10.0.kH,
-              Obx(
-                () => controller.isloading.value
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : ListView.separated(
-                        shrinkWrap: true,
-                        itemCount: controller.reports.length,
-                        separatorBuilder: (BuildContext context, int index) {
-                          return controller.reports[index].status == "reviewed"
-                              ? SizedBox.shrink()
-                              : 10.0.kH;
-                        },
-                        itemBuilder: (BuildContext context, int index) {
-                          return controller.reports[index].status == "reviewed"
-                              ? SizedBox.shrink()
-                              : _adminReportContainer(context, index);
-                        },
-                      ),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  children: [TextApp.mainAppText("Report")],
+                ),
+                10.0.kH,
+                Obx(
+                  () => controller.isloading.value
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : ListView.separated(
+                          shrinkWrap: true,
+                          itemCount: controller.reports.length,
+                          separatorBuilder: (BuildContext context, int index) {
+                            return controller.reports[index].status ==
+                                    "reviewed"
+                                ? SizedBox.shrink()
+                                : 10.0.kH;
+                          },
+                          itemBuilder: (BuildContext context, int index) {
+                            return controller.reports[index].status ==
+                                    "reviewed"
+                                ? SizedBox.shrink()
+                                : _adminReportContainer(context, index);
+                          },
+                        ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -97,6 +101,24 @@ class _AdminReportPageState extends State<AdminReportPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                GestureDetector(
+                  onTap: () {
+                    controller.deleteReport(controller.reports[index].id);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color: controller.reports[index].status == 'submited'
+                            ? AppColor.subappcolor
+                            : AppColor.mainAppColor,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      "Reject",
+                      style: TextStyle(color: AppColor.subappcolor),
+                    ),
+                  ),
+                ),
+                5.0.kW,
                 GestureDetector(
                   onTap: () {
                     controller.reports[index].status == 'submited'
