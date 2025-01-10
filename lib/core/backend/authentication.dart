@@ -3,8 +3,8 @@
 import 'package:damgerepoert/config/theme/theme.dart';
 import 'package:damgerepoert/core/backend/user_repository.dart';
 import 'package:damgerepoert/core/exceptions/exceptions.dart';
+import 'package:damgerepoert/features/dashboard/user_check_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -25,12 +25,12 @@ class AuthenticationRepository extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    ever(firebaseUser, _setInitialScreen);
+    // ever(firebaseUser, _setInitialScreen);
   }
 
-  _setInitialScreen(User? user) {
-    user == null ? Get.offAll(Container()) : Get.offAll(Container());
-  }
+  // _setInitialScreen(User? user) {
+  //   user == null ? Get.offAll(Container()) : Get.offAll(Container());
+  // }
 
   Future<bool> createUserWithEmailAndPassword(
       String email, String password) async {
@@ -58,9 +58,14 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  Future<void> logout() async => {
-        await _auth.signOut(),
+  Future<void> logout() async {
+    try {
+      await _auth.signOut();
+      Get.offAll(const UserTypeCheck());
 
-        // UserController.instance.clearUserInfo()
-      };
+      // UserController.instance.clearUserInfo();
+    } catch (e) {
+      print(e);
+    }
+  }
 }

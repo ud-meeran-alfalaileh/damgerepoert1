@@ -92,7 +92,7 @@ void showLogoutDialog(BuildContext context) {
                 ElevatedButton(
                     onPressed: () =>
                         {print("object"), AuthenticationRepository().logout()},
-                    child: Text('logout'))
+                    child: const Text('logout'))
               ],
             ),
           ],

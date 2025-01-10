@@ -35,7 +35,7 @@ class UserModel {
         email: data["Email"],
         name: data["UserName"],
         password: data["Password"],
-        phone: data["phone"],
+        phone: data["phone"] ?? '9999',
         userType: data['userType']);
   }
 }

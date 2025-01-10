@@ -6,6 +6,9 @@ class ReportModel {
   late String reportName;
   late String date;
   late String reportImage;
+  late String reportDescription;
+  late String reportLocation;
+  late String status;
 
   ReportModel({
     this.id,
@@ -13,6 +16,9 @@ class ReportModel {
     required this.reportName,
     required this.date,
     required this.reportImage,
+    required this.reportDescription,
+    required this.reportLocation,
+    required this.status,
   });
 
   tojason() {
@@ -21,6 +27,9 @@ class ReportModel {
       "ReportName": reportName,
       "Date": date,
       "ReportImage": reportImage,
+      "reportDescription": reportDescription,
+      "reportLocation": reportLocation,
+      "status": status,
     };
   }
 
@@ -31,8 +40,11 @@ class ReportModel {
       id: documentSnapshot.id,
       userEmail: data["UserEmail"],
       reportName: data["ReportName"],
+      status: data["status"],
+      reportLocation: data["reportLocation"] ?? '',
       date: data["Date"],
       reportImage: data["ReportImage"],
+      reportDescription: data['reportDescription'] ?? '',
     );
   }
 }
